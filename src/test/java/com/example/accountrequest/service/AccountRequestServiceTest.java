@@ -1,4 +1,4 @@
-package com.example.accountrequest;
+package com.example.accountrequest.service;
 
 import com.example.accountrequest.dto.AccountRequestResponseDto;
 import com.example.accountrequest.dto.CreateAccountRequestDto;
@@ -10,7 +10,6 @@ import com.example.accountrequest.exception.DuplicatePendingRequestException;
 import com.example.accountrequest.exception.UnauthorizedActionException;
 import com.example.accountrequest.repository.AccountRequestRepository;
 import com.example.accountrequest.repository.UserRepository;
-import com.example.accountrequest.service.AccountRequestService;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
