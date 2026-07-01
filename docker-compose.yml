@@ -1,0 +1,28 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: account-request-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: account_request_db
+    ports:
+      - "3307:3306"
+    volumes:
+      - account-request-mysql-data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: account-request-app
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/account_request_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Taipei
+      DB_USERNAME: root
+      DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "8080:8080"
+
+volumes:
+  account-request-mysql-data:
